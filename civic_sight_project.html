@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CivicSight – Report an Issue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    input[type="file"] {
+      margin-top: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .history-button {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqxCPexwDtXztgW-chdKvXBC3qWuEvd2w&callback=initMap">
+  </script>
+</head>
+<body>
+
+  <h1>CivicSight – Report an Issue</h1>
+
+  <form action="submit_report.php" method="post" enctype="multipart/form-data" id="reportForm">
+    <label for="photo">📷 Upload Photo:</label>
+    <input type="file" name="photo" accept="image/*" required>
+
+    <label for="gps">🗺️ Location (Paste Google Maps link or Coordinates or select on map):</label>
+    <input type="text" name="gps" id="gps" placeholder="e.g., 23.8103,90.4125" required>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+
+    <label for="type">🧾 Issue Type:</label>
+    <select name="type" id="type" required>
+      <option value="pothole">🕳️ Pothole / Road Damage</option>
+      <option value="garbage">🗑️ Garbage Dump / Overflowing Bin</option>
+      <option value="disaster">🌪️ Disaster Damage (Flood, Fire, etc.)</option>
+    </select>
+
+    <label for="description">📝 Description (optional):</label>
+    <textarea name="description" id="description" rows="3" placeholder="Additional details (optional)"></textarea>
+
+    <button type="submit">⬆️ Submit Report</button>
+  </form>
+
+  <div class="history-button">
+    <a href="submission_history.php"><button type="button">📄 View My Submission History</button></a>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
